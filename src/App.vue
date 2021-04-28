@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       api_key: process.env.VUE_APP_WEATHER_KEY,
-      base_url: "http://api.openweathermap.org/data/2.5/weather",
+      base_url: "https://api.openweathermap.org/data/2.5/weather",
       query: "Taichung",
       weather: {},
       date: ""
