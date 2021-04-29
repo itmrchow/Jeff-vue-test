@@ -1,9 +1,15 @@
 <template>
-  <div id="app">
+  <div id="app" :class="getBackGround">
     <div class="container">
       <!-- search bar -->
       <div class="search-box">
-        <input type="text" placeholder="Search...." class="search-bar" />
+        <input
+          type="text"
+          placeholder="Search...."
+          class="search-bar"
+          v-model="query"
+          @keyup.enter="fetchWeather"
+        />
       </div>
 
       <div class="weather-wrapper">
@@ -31,6 +37,9 @@ export default {
   computed: {
     currentDate() {
       return dayjs().format(`MMMM Do YYYY`);
+    },
+    getBackGround() {
+      return this.weather.main && this.weather.main.temp > 20 ? "warm" : "";
     }
   },
   data() {
@@ -52,7 +61,7 @@ export default {
   },
   created() {
     this.fetchWeather();
-  }
+  },
 };
 </script>
 
